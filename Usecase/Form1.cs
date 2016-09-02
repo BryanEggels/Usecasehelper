@@ -18,31 +18,31 @@ namespace Usecase
         public Form1()
         {
             InitializeComponent();
-
+            panel1.Refresh();
+            panel1.BackColor = Color.Red;
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            formGraphics.Clear(Color.Transparent);
+            panel1.Refresh();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            Pen mypen = new Pen(Color.Black);
-
-            formGraphics = this.CreateGraphics();
-            
-
-            
+            formGraphics = panel1.CreateGraphics();
         }
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            int x = MousePosition.X;
-            int y = MousePosition.Y;
-            Point punt1 = new Point(x, y);
-            Actor popetje = new Actor(punt1, formGraphics);
-            
+            MouseEventArgs muis = (MouseEventArgs)e;
+            if (rad_actor.Checked && rad_create.Checked)
+            {
+                Actor popetje = new Actor(muis.Location, formGraphics);
+            }
+            else if (rad_usecase.Checked && rad_create.Checked)
+            {
+                Usecase usec = new Usecase(muis.Location, formGraphics);
+            }
         }
     }
 }

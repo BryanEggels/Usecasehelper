@@ -39,8 +39,11 @@
             this.btn_remove = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -106,13 +109,13 @@
             this.rad_select.Name = "rad_select";
             this.rad_select.Size = new System.Drawing.Size(55, 17);
             this.rad_select.TabIndex = 1;
-            this.rad_select.TabStop = true;
             this.rad_select.Text = "Select";
             this.rad_select.UseVisualStyleBackColor = true;
             // 
             // rad_create
             // 
             this.rad_create.AutoSize = true;
+            this.rad_create.Checked = true;
             this.rad_create.Location = new System.Drawing.Point(22, 20);
             this.rad_create.Name = "rad_create";
             this.rad_create.Size = new System.Drawing.Size(56, 17);
@@ -123,7 +126,7 @@
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(439, 13);
+            this.btn_clear.Location = new System.Drawing.Point(465, 13);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(75, 23);
             this.btn_clear.TabIndex = 2;
@@ -133,7 +136,7 @@
             // 
             // btn_remove
             // 
-            this.btn_remove.Location = new System.Drawing.Point(439, 43);
+            this.btn_remove.Location = new System.Drawing.Point(465, 43);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(75, 23);
             this.btn_remove.TabIndex = 3;
@@ -157,11 +160,30 @@
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Location = new System.Drawing.Point(268, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(117, 100);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Naam";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(7, 20);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(104, 74);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 401);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btn_remove);
@@ -174,6 +196,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,6 +215,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
