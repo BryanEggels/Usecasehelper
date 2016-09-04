@@ -38,6 +38,22 @@ namespace Usecase
             if (rad_actor.Checked && rad_create.Checked)
             {
                 Actor popetje = new Actor(muis.Location, formGraphics);
+                Label label = new Label();
+                try
+                {
+                    label.Text = richTextBox1.Text;
+                }
+                catch
+                {
+                    label.Text = "Actor";
+                    
+                }
+                finally
+                {
+                    label.Visible = true;
+                    label.Location = muis.Location;
+                    this.Controls.Add(label);
+                }
             }
             else if (rad_usecase.Checked && rad_create.Checked)
             {
