@@ -4,16 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+using System.Windows.Forms;
 
 namespace Usecase
 {
     class Actor
     {
-        Pen streeppen = new Pen(Color.Black);
-        public Actor(Point punt1, Graphics g)
+        Point P1;
+        public Point p1
         {
-            DrawActor(g, punt1);
+            get
+            {
+                return P1;
+            }
+        }
+        Pen streeppen = new Pen(Color.Black);
+        public Actor(Point punt1, Graphics g, string naam)
+        {
+            DrawActor(g, punt1, naam);
+            this.P1 = punt1;
         }
 
         private void DrawHead(Graphics g, Point p1)
@@ -41,12 +50,34 @@ namespace Usecase
             Point punt2 = new Point(p1.X, hoogte);
             g.DrawLine(streeppen, p1, punt2);
         }
-        private void DrawActor(Graphics g, Point p1)
+        private void DrawActor(Graphics g, Point p1, string naam)
         {
+            
             DrawBody(g, p1);
             DrawHead(g, p1);
             DrawArms(g, p1);
             DrawLegs(g, p1);
+            DrawName(g, p1, naam);
+             
+        }
+        private void DrawName(Graphics g, Point p1,string naam)
+        {
+            p1.Y = p1.Y + 40;
+            p1.X = p1.X - 20;
+            Size grootte = new Size(10, 10);
+            grootte.Height = 5;
+            grootte.Width = 5;
+            FontFamily family = new FontFamily("Arial");
+            Font font = new Font(family, 10);
+            if (naam == "")
+            {
+                g.DrawString("Actor", font, Brushes.Black, PointF.Add(p1, grootte));
+            }
+            else
+            {
+                g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
+            }
+            
         }
 
     }
