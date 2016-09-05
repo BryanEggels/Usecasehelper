@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_beschrijving = new System.Windows.Forms.RichTextBox();
+            this.tb_uitzonderingen = new System.Windows.Forms.RichTextBox();
             this.tb_resultaat = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_aannamen = new System.Windows.Forms.TextBox();
@@ -42,23 +42,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // richTextBox2
+            // tb_beschrijving
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(113, 121);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(336, 128);
-            this.richTextBox2.TabIndex = 31;
-            this.richTextBox2.Text = "";
+            this.tb_beschrijving.Location = new System.Drawing.Point(113, 121);
+            this.tb_beschrijving.Name = "tb_beschrijving";
+            this.tb_beschrijving.Size = new System.Drawing.Size(336, 128);
+            this.tb_beschrijving.TabIndex = 31;
+            this.tb_beschrijving.Text = "";
             // 
-            // richTextBox1
+            // tb_uitzonderingen
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(113, 255);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(336, 118);
-            this.richTextBox1.TabIndex = 30;
-            this.richTextBox1.Text = "";
+            this.tb_uitzonderingen.Location = new System.Drawing.Point(113, 255);
+            this.tb_uitzonderingen.Name = "tb_uitzonderingen";
+            this.tb_uitzonderingen.Size = new System.Drawing.Size(336, 118);
+            this.tb_uitzonderingen.TabIndex = 30;
+            this.tb_uitzonderingen.Text = "";
             // 
             // tb_resultaat
             // 
@@ -158,13 +159,24 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Naam:";
             // 
+            // btn_ok
+            // 
+            this.btn_ok.Location = new System.Drawing.Point(374, 419);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_ok.TabIndex = 32;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            // 
             // property
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 445);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.btn_ok);
+            this.Controls.Add(this.tb_beschrijving);
+            this.Controls.Add(this.tb_uitzonderingen);
             this.Controls.Add(this.tb_resultaat);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tb_aannamen);
@@ -186,8 +198,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tb_beschrijving;
+        private System.Windows.Forms.RichTextBox tb_uitzonderingen;
         private System.Windows.Forms.TextBox tb_resultaat;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tb_aannamen;
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_ok;
     }
 }

@@ -16,6 +16,7 @@ namespace Usecase
 
         Graphics formGraphics;
         List<Actor> actoren = new List<Actor>();
+        List<Usecase> usecases = new List<Usecase>();
         public Form1()
         {
             InitializeComponent();
@@ -26,16 +27,6 @@ namespace Usecase
         private void btn_clear_Click(object sender, EventArgs e)
         {
             pictureBox1.Refresh();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void panel1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -49,9 +40,29 @@ namespace Usecase
             else if (rad_usecase.Checked && rad_create.Checked)
             {
                 Usecase usec = new Usecase(muis.Location, formGraphics);
+                usecases.Add(usec);
+            }
+            else if (rad_select.Checked)
+            {
+                foreach (Actor actor in actoren)
+                {
+                    if (actor.Clicked(muis))
+                    {
+                        MessageBox.Show(actor.naam);
+                    }
+                }
+                foreach(Usecase cas in usecases)
+                {
+                    if (cas.selected(muis))
+                    {
+                        property window = new property(cas);
+                        window.Show();
+                        //cas = window.usecase;
+                    }
+                    
+                }
             }
         }
-
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             formGraphics = pictureBox1.CreateGraphics();

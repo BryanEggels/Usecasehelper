@@ -18,12 +18,30 @@ namespace Usecase
                 return P1;
             }
         }
+        string Naam;
+        Rectangle Rectangle;
+        public Rectangle rectangle
+        {
+            get
+            {
+                return Rectangle;
+            }
+        }
+        public string naam
+        {
+            get
+            {
+                return Naam;
+            }
+        }
+
         Pen streeppen = new Pen(Color.Black);
         Pen invis = new Pen(Color.Transparent);
         public Actor(Point punt1, Graphics g, string naam)
         {
             DrawActor(g, punt1, naam);
             this.P1 = punt1;
+            this.Naam = naam;
         }
 
         private void DrawHead(Graphics g, Point p1)
@@ -75,19 +93,28 @@ namespace Usecase
             if (naam == "")
             {
                 g.DrawString("Actor", font, Brushes.Black, PointF.Add(p1, grootte));
+                this.Naam = "Actor";
             }
             else
             {
                 g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
-
         }
         private void DrawHitbox(Graphics g,Point p1)
         {
             Rectangle rec = new Rectangle(p1.X, p1.Y, 20, 65);
             g.DrawRectangle(streeppen, rec);
-
+            Rectangle = rec;
         }
 
+        public bool Clicked(MouseEventArgs e)
+        {
+            return Rectangle.Contains(e.Location);
+        }
+
+        public void Selected()
+        {
+
+        }
     }
 }
