@@ -90,15 +90,18 @@ namespace Usecase
             grootte.Width = 5;
             FontFamily family = new FontFamily("Arial");
             Font font = new Font(family, 10);
-            if (naam == "")
+
+            if(naam !=null)
             {
-                g.DrawString("Actor", font, Brushes.Black, PointF.Add(p1, grootte));
-                this.Naam = "Actor";
+
+                g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
             else
             {
+                this.Naam = "Actor";
                 g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
+
         }
         private void DrawHitbox(Graphics g,Point p1)
         {
