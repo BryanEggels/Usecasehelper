@@ -19,6 +19,7 @@ namespace Usecase
             }
         }
         Pen streeppen = new Pen(Color.Black);
+        Pen invis = new Pen(Color.Transparent);
         public Actor(Point punt1, Graphics g, string naam)
         {
             DrawActor(g, punt1, naam);
@@ -27,8 +28,12 @@ namespace Usecase
 
         private void DrawHead(Graphics g, Point p1)
         {
-            Rectangle rec = new Rectangle(p1.X - 10, p1.Y - 20, 20, 20);
+            p1.X = p1.X - 10;
+            p1.Y = p1.Y - 20;
+            Rectangle rec = new Rectangle(p1.X, p1.Y, 20, 20);
             g.DrawEllipse(streeppen, rec);
+            DrawHitbox(g, p1);
+            
         }
         private void DrawArms(Graphics g, Point p1)
         {
@@ -52,13 +57,11 @@ namespace Usecase
         }
         private void DrawActor(Graphics g, Point p1, string naam)
         {
-            
             DrawBody(g, p1);
             DrawHead(g, p1);
             DrawArms(g, p1);
             DrawLegs(g, p1);
             DrawName(g, p1, naam);
-             
         }
         private void DrawName(Graphics g, Point p1,string naam)
         {
@@ -77,7 +80,13 @@ namespace Usecase
             {
                 g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
-            
+
+        }
+        private void DrawHitbox(Graphics g,Point p1)
+        {
+            Rectangle rec = new Rectangle(p1.X, p1.Y, 20, 65);
+            g.DrawRectangle(streeppen, rec);
+
         }
 
     }
