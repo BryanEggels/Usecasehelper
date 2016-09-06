@@ -17,7 +17,8 @@ namespace Usecase
         Graphics formGraphics;
         List<Actor> actoren = new List<Actor>();
         List<Usecase> usecases = new List<Usecase>();
-        int y = 30; 
+        int y = 30;
+        
         public Form1()
         {
             InitializeComponent();
@@ -66,26 +67,29 @@ namespace Usecase
                     }
                 }
             }
-            else if (rad_line.Checked && rad_create.Checked) //nieuwe line class maken, point wordt steeds opnieuw aangemaakt dus p1 begint bij x1 en y1
+            else if (rad_line.Checked && rad_create.Checked) 
             {
-                Point lijnpunt1 = new Point();
-                Point lijnpunt2 = new Point();
-                foreach (Actor actor in actoren)
+                Lijn line = new Lijn(formGraphics); //moet boven in de class komen?
+
+                while(line.beginpunt.X == 0 || line.eindpunt.X == 0) //hangt vast omdat hij blijft checken met 1 klik, fix it
                 {
-                    
-                    if (actor.Clicked(muis))
+                    foreach (Actor actor in actoren)
                     {
-                       lijnpunt1 = actor.Selected();
+
+                        if (actor.Clicked(muis))
+                        {
+                            line.beginpunt = actor.Selected();
+                        }
+                    }
+                    foreach (Usecase cas in usecases)
+                    {
+                        if (cas.Selected(muis))
+                        {
+                            line.eindpunt = cas.punt;
+                        }
                     }
                 }
-                foreach (Usecase cas in usecases)
-                {
-                    if (cas.Selected(muis))
-                    {
-                        lijnpunt2 = cas.punt;
-                    }
-                }
-                Drawline(lijnpunt1, lijnpunt2);
+                line.Drawline();
             }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -94,18 +98,12 @@ namespace Usecase
             if (only_once)
             {
                 formGraphics = pictureBox1.CreateGraphics();
+                
                 only_once = false;
+                
             }
             
         }
-        private void Drawline(Point p1, Point p2) //copy naar line class
-        {
-            if (p1 != null && p2.X > 1)
-            {
-                Pen pen = new Pen(Color.Black);
-                formGraphics.DrawLine(pen, p1, p2);
-            }
-            
-        } 
+
     }
 }
