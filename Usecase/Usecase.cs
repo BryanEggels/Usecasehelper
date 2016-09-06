@@ -100,7 +100,6 @@ namespace Usecase
                 Resultaat = value;
             }
         }
-
         public Point punt
         {
             get
@@ -118,7 +117,7 @@ namespace Usecase
             DrawName(punt, g);
             
         }
-        public bool selected(MouseEventArgs muis)
+        public bool Selected(MouseEventArgs muis)
         {
             return hitbox.Contains(muis.Location);
         }

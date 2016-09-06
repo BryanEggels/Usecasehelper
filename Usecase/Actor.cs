@@ -13,7 +13,7 @@ namespace Usecase
         Point P1;
         string Naam;
         Rectangle Rectangle;
-        Pen streeppen = new Pen(Color.Black);
+        Pen streeppen = new Pen(Color.Black, 3);
         Pen invis = new Pen(Color.Transparent);
         public Rectangle rectangle
         {
@@ -111,9 +111,10 @@ namespace Usecase
         {
             return Rectangle.Contains(e.Location);
         }
-        public void Selected()
+        public Point Selected()
         {
-
+            Point armpunt = new Point(P1.X + 10, p1.Y + 12);
+            return armpunt;
         }
     }
 }
