@@ -19,6 +19,10 @@ namespace Usecase
         string Uitzonderingen;
         string Resultaat;
 
+        Pen pen = new Pen(Color.Black);
+        Point Punt;
+        Rectangle hitbox;
+
         public string naam
         {
             get
@@ -97,9 +101,6 @@ namespace Usecase
             }
         }
 
-        Pen pen = new Pen(Color.Black);
-        Point Punt;
-        Rectangle hitbox;
         public Point punt
         {
             get
@@ -121,7 +122,6 @@ namespace Usecase
         {
             return hitbox.Contains(muis.Location);
         }
-
         public void DrawName(Point p1, Graphics g)
         {
             Size grootte = new Size(10, 10);

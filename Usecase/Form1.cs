@@ -57,7 +57,7 @@ namespace Usecase
                     {
                         property window = new property(cas);
                         window.Show();
-                        //cas = window.usecase;
+                        
                     }
                     
                 }
