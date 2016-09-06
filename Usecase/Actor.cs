@@ -11,15 +11,10 @@ namespace Usecase
     class Actor
     {
         Point P1;
-        public Point p1
-        {
-            get
-            {
-                return P1;
-            }
-        }
         string Naam;
         Rectangle Rectangle;
+        Pen streeppen = new Pen(Color.Black);
+        Pen invis = new Pen(Color.Transparent);
         public Rectangle rectangle
         {
             get
@@ -34,16 +29,20 @@ namespace Usecase
                 return Naam;
             }
         }
+        public Point p1
+        {
+            get
+            {
+                return P1;
+            }
+        }
 
-        Pen streeppen = new Pen(Color.Black);
-        Pen invis = new Pen(Color.Transparent);
         public Actor(Point punt1, Graphics g, string naam)
         {
             DrawActor(g, punt1, naam);
             this.P1 = punt1;
             this.Naam = naam;
         }
-
         private void DrawHead(Graphics g, Point p1)
         {
             p1.X = p1.X - 10;
@@ -91,7 +90,7 @@ namespace Usecase
             FontFamily family = new FontFamily("Arial");
             Font font = new Font(family, 10);
 
-            if(naam !=null)
+            if(naam != "")
             {
 
                 g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
@@ -99,9 +98,8 @@ namespace Usecase
             else
             {
                 this.Naam = "Actor";
-                g.DrawString(naam, font, Brushes.Black, PointF.Add(p1, grootte));
+                g.DrawString(Naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
-
         }
         private void DrawHitbox(Graphics g,Point p1)
         {
@@ -109,12 +107,10 @@ namespace Usecase
             g.DrawRectangle(streeppen, rec);
             Rectangle = rec;
         }
-
         public bool Clicked(MouseEventArgs e)
         {
             return Rectangle.Contains(e.Location);
         }
-
         public void Selected()
         {
 

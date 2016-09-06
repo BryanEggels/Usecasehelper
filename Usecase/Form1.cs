@@ -34,12 +34,12 @@ namespace Usecase
             MouseEventArgs muis = (MouseEventArgs)e;
             if (rad_actor.Checked && rad_create.Checked)
             {
-                Actor actor = new Actor(muis.Location, formGraphics, richTextBox1.Text);
+                Actor actor = new Actor(muis.Location, formGraphics, tb_name.Text);
                 actoren.Add(actor);
             }
             else if (rad_usecase.Checked && rad_create.Checked)
             {
-                Usecase usec = new Usecase(muis.Location, formGraphics);
+                Usecase usec = new Usecase(muis.Location, formGraphics, tb_name.Text);
                 usecases.Add(usec);
             }
             else if (rad_select.Checked)

@@ -39,7 +39,7 @@
             this.btn_remove = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_name = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -154,7 +154,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.tb_name);
             this.groupBox3.Location = new System.Drawing.Point(268, 13);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(117, 100);
@@ -162,13 +162,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Naam";
             // 
-            // richTextBox1
+            // tb_name
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 20);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(104, 74);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.tb_name.Location = new System.Drawing.Point(7, 20);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(104, 74);
+            this.tb_name.TabIndex = 0;
+            this.tb_name.Text = "";
             // 
             // pictureBox1
             // 
@@ -218,7 +218,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tb_name;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
