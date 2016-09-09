@@ -21,7 +21,7 @@ namespace Usecase
             }
             set
             {
-                value = Beginpunt;
+                Beginpunt = value;
             }
         }
         public Point eindpunt
@@ -32,7 +32,7 @@ namespace Usecase
             }
             set
             {
-                value = Eindpunt;
+                Eindpunt = value;
             }
         }
         public Lijn(Graphics grap)

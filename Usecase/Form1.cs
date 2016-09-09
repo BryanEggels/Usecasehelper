@@ -17,6 +17,8 @@ namespace Usecase
         Graphics formGraphics;
         List<Actor> actoren = new List<Actor>();
         List<Usecase> usecases = new List<Usecase>();
+        Lijn line;
+        bool only_once = true;
         int y = 30;
         
         public Form1()
@@ -61,7 +63,7 @@ namespace Usecase
                 foreach(Usecase cas in usecases)
                 {
                     if (cas.Selected(muis))
-                    {
+                    {   
                         property window = new property(cas);
                         window.Show();
                     }
@@ -69,40 +71,67 @@ namespace Usecase
             }
             else if (rad_line.Checked && rad_create.Checked) 
             {
-                Lijn line = new Lijn(formGraphics); //moet boven in de class komen?
-
-                while(line.beginpunt.X == 0 || line.eindpunt.X == 0) //hangt vast omdat hij blijft checken met 1 klik, fix it
-                {
-                    foreach (Actor actor in actoren)
-                    {
-
-                        if (actor.Clicked(muis))
-                        {
-                            line.beginpunt = actor.Selected();
-                        }
-                    }
-                    foreach (Usecase cas in usecases)
-                    {
-                        if (cas.Selected(muis))
-                        {
-                            line.eindpunt = cas.punt;
-                        }
-                    }
-                }
-                line.Drawline();
+                CreateLine(muis);
             }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            bool only_once = true;
             if (only_once)
             {
                 formGraphics = pictureBox1.CreateGraphics();
-                
+                line = new Lijn(formGraphics);
                 only_once = false;
-                
             }
-            
+        }
+
+        private void ReDraw()
+        {
+            foreach(Actor act in actoren)
+            {
+                act.DrawActor(formGraphics, act.p1, act.naam);
+            }
+            foreach(Usecase cas in usecases)
+            {
+                cas.DrawCase(formGraphics);
+            }
+        }
+        private void CreateLine(MouseEventArgs muis)
+        {
+            if (line.beginpunt.X == 0 || line.eindpunt.X == 0)
+            {
+                foreach (Actor actor in actoren)
+                {
+
+                    if (actor.Clicked(muis))
+                    {
+                        line.beginpunt = new Point(actor.armpunt.X, actor.armpunt.Y);
+                    }
+                }
+                foreach (Usecase cas in usecases)
+                {
+                    if (cas.Selected(muis))
+                    {
+                        line.eindpunt = cas.punt;
+                    }
+                }
+            }
+            if (line.beginpunt.X > 0 && line.eindpunt.X > 0)
+            {
+                line.Drawline();
+                line = new Lijn(formGraphics);
+            }
+            else
+            {
+                line = new Lijn(formGraphics);
+                foreach (Actor actor in actoren)
+                {
+
+                    if (actor.Clicked(muis))
+                    {
+                        line.beginpunt = actor.armpunt;
+                    }
+                }
+            }
         }
 
     }

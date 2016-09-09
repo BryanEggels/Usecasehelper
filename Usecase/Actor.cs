@@ -36,12 +36,20 @@ namespace Usecase
                 return P1;
             }
         }
-
-        public Actor(Point punt1, Graphics g, string naam)
+        public Point armpunt
         {
-            DrawActor(g, punt1, naam);
+            get
+            {
+                Point armpunt = new Point(P1.X + 10, p1.Y + 12);
+                return armpunt;
+            }
+        }
+
+        public Actor(Point punt1, Graphics g, string name)
+        {
             this.P1 = punt1;
-            this.Naam = naam;
+            this.Naam = name;
+            DrawActor(g, punt1, naam);
         }
         private void DrawHead(Graphics g, Point p1)
         {
@@ -66,13 +74,19 @@ namespace Usecase
             legpoint2.X = legpoint2.X - 20;
             g.DrawLine(streeppen, legpoint1, legpoint2);
         }
+
+        internal void Selected()
+        {
+            throw new NotImplementedException();
+        }
+
         private void DrawBody(Graphics g, Point p1)
         {
             int hoogte = p1.Y + 30;
             Point punt2 = new Point(p1.X, hoogte);
             g.DrawLine(streeppen, p1, punt2);
         }
-        private void DrawActor(Graphics g, Point p1, string naam)
+        public void DrawActor(Graphics g, Point p1, string naam)
         {
             DrawBody(g, p1);
             DrawHead(g, p1);
@@ -111,10 +125,6 @@ namespace Usecase
         {
             return Rectangle.Contains(e.Location);
         }
-        public Point Selected()
-        {
-            Point armpunt = new Point(P1.X + 10, p1.Y + 12);
-            return armpunt;
-        }
+
     }
 }

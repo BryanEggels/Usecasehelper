@@ -51,7 +51,7 @@ namespace Usecase
             usecase.samenvatting = tb_samenvatting.Text;
             usecase.beschrijving = tb_beschrijving.Text;
             usecase.uitzonderingen = tb_uitzonderingen.Text;
-            this.Close();
+            Close();
             
         }
     }

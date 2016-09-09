@@ -110,10 +110,9 @@ namespace Usecase
         public Usecase(Point p1, Graphics g, string name)
         {
             this.Punt = p1;
-            Rectangle rec = new Rectangle(p1.X, p1.Y, 100, 30);
-            g.DrawEllipse(pen, rec);
-            this.hitbox = rec;
+            
             Naam = name;
+            DrawCase(g);
             DrawName(punt, g);
             
         }
@@ -138,6 +137,13 @@ namespace Usecase
                 this.Naam = "Usecase";
                 g.DrawString(Naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
+        }
+
+        public void DrawCase(Graphics g)
+        {
+            Rectangle rec = new Rectangle(punt.X, punt.Y, 100, 30);
+            g.DrawEllipse(pen, rec);
+            this.hitbox = rec;
         }
     }
 }
