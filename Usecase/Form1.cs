@@ -17,6 +17,7 @@ namespace Usecase
         Graphics formGraphics;
         List<Actor> actoren = new List<Actor>();
         List<Usecase> usecases = new List<Usecase>();
+        List<Lijn> lijnen = new List<Lijn>();
         Lijn line;
         bool only_once = true;
         int y = 30;
@@ -25,7 +26,7 @@ namespace Usecase
         {
             InitializeComponent();
             pictureBox1.Refresh();
-            pictureBox1.BackColor = Color.Red;
+            
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -39,7 +40,12 @@ namespace Usecase
         {
             
             MouseEventArgs muis = (MouseEventArgs)e;
-            if (rad_actor.Checked && rad_create.Checked && actoren.Count < 3)
+
+            if (tb_name.Text == "" && rad_actor.Checked || tb_name.Text == "" && rad_usecase.Checked)
+            {
+                MessageBox.Show("please use the textbox");
+            }
+            else if (rad_actor.Checked && rad_create.Checked && actoren.Count < 3)
             {
                 Point p1 = new Point(20, y);
                 Actor actor = new Actor(p1 ,formGraphics, tb_name.Text);
@@ -73,6 +79,37 @@ namespace Usecase
             {
                 CreateLine(muis);
             }
+            else if (rad_delete.Checked)
+            {
+                foreach (Usecase cas in usecases)
+                {
+                    if (cas.Selected(muis))
+                    {
+                        usecases.Remove(cas);
+                        break;
+                    }
+                }
+                foreach (Lijn line in lijnen)
+                {
+                    if (line.Selected(muis))
+                    {
+                        lijnen.Remove(line);
+                        break;
+                    }
+                }
+                foreach(Actor actor in actoren)
+                {
+                    if (actor.Clicked(muis))
+                    {
+                        actoren.Remove(actor);
+                        break;
+                    }
+                }
+                
+                pictureBox1.Refresh();
+                ReDraw();
+
+            }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -83,7 +120,7 @@ namespace Usecase
                 only_once = false;
             }
         }
-
+        //nieuwe radiobuttons om de actor rechtstreeks te verwijderen, for loop
         private void ReDraw()
         {
             foreach(Actor act in actoren)
@@ -133,6 +170,5 @@ namespace Usecase
                 }
             }
         }
-
     }
 }

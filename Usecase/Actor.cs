@@ -118,7 +118,7 @@ namespace Usecase
         private void DrawHitbox(Graphics g,Point p1)
         {
             Rectangle rec = new Rectangle(p1.X, p1.Y, 20, 65);
-            g.DrawRectangle(streeppen, rec);
+            g.DrawRectangle(invis, rec);
             Rectangle = rec;
         }
         public bool Clicked(MouseEventArgs e)

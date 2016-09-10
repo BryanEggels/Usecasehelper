@@ -144,6 +144,7 @@ namespace Usecase
             Rectangle rec = new Rectangle(punt.X, punt.Y, 100, 30);
             g.DrawEllipse(pen, rec);
             this.hitbox = rec;
-        }
+            DrawName(punt, g);
+        } 
     }
 }

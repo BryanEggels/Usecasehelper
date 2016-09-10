@@ -41,6 +41,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tb_name = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rad_delete = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,6 +95,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rad_delete);
             this.groupBox2.Controls.Add(this.rad_select);
             this.groupBox2.Controls.Add(this.rad_create);
             this.groupBox2.Location = new System.Drawing.Point(136, 13);
@@ -180,6 +182,17 @@
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
+            // rad_delete
+            // 
+            this.rad_delete.AutoSize = true;
+            this.rad_delete.Location = new System.Drawing.Point(22, 66);
+            this.rad_delete.Name = "rad_delete";
+            this.rad_delete.Size = new System.Drawing.Size(56, 17);
+            this.rad_delete.TabIndex = 2;
+            this.rad_delete.TabStop = true;
+            this.rad_delete.Text = "Delete";
+            this.rad_delete.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +233,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox tb_name;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton rad_delete;
     }
 }
 
