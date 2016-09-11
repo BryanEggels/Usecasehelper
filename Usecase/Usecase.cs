@@ -137,14 +137,13 @@ namespace Usecase
                 this.Naam = "Usecase";
                 g.DrawString(Naam, font, Brushes.Black, PointF.Add(p1, grootte));
             }
-        }
-
+        } //draws name of the usecase
         public void DrawCase(Graphics g)
         {
             Rectangle rec = new Rectangle(punt.X, punt.Y, 100, 30);
             g.DrawEllipse(pen, rec);
             this.hitbox = rec;
             DrawName(punt, g);
-        } 
+        }  //draws the graphics
     }
 }

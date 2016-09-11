@@ -43,6 +43,7 @@ namespace Usecase
         public void Drawline()
         {
             Pen pen = new Pen(Color.Black);
+            Eindpunt.X = Eindpunt.X + 31;
             g.DrawLine(pen, Beginpunt, Eindpunt);
         }
         public bool Selected(MouseEventArgs m)

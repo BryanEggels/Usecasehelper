@@ -24,9 +24,7 @@ namespace Usecase
         
         public Form1()
         {
-            InitializeComponent();
-            pictureBox1.Refresh();
-            
+            InitializeComponent(); 
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -102,10 +100,11 @@ namespace Usecase
                     if (actor.Clicked(muis))
                     {
                         actoren.Remove(actor);
+                        y = y - 110;
                         break;
+                        
                     }
                 }
-                
                 pictureBox1.Refresh();
                 ReDraw();
 
@@ -120,7 +119,6 @@ namespace Usecase
                 only_once = false;
             }
         }
-        //nieuwe radiobuttons om de actor rechtstreeks te verwijderen, for loop
         private void ReDraw()
         {
             foreach(Actor act in actoren)
@@ -131,7 +129,7 @@ namespace Usecase
             {
                 cas.DrawCase(formGraphics);
             }
-        }
+        } //redraws everything in the picturebox
         private void CreateLine(MouseEventArgs muis)
         {
             if (line.beginpunt.X == 0 || line.eindpunt.X == 0)
@@ -169,6 +167,6 @@ namespace Usecase
                     }
                 }
             }
-        }
+        } //creates new lines 
     }
 }

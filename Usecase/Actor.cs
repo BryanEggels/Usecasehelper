@@ -93,7 +93,7 @@ namespace Usecase
             DrawArms(g, p1);
             DrawLegs(g, p1);
             DrawName(g, p1, naam);
-        }
+        } //draws the complete actor
         private void DrawName(Graphics g, Point p1,string naam)
         {
             p1.Y = p1.Y + 40;
