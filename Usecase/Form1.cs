@@ -31,6 +31,8 @@ namespace Usecase
         {
             pictureBox1.Refresh();
             actoren.Clear();
+            lijnen.Clear();
+            usecases.Clear();
             y = 30;
         }
 
@@ -61,7 +63,7 @@ namespace Usecase
                 {
                     if (actor.Clicked(muis))
                     {
-                        actor.Selected();
+                        actor.Selected(); //method not yet created.
                     }
                 }
                 foreach(Usecase cas in usecases)
@@ -107,7 +109,6 @@ namespace Usecase
                 }
                 pictureBox1.Refresh();
                 ReDraw();
-
             }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -129,9 +130,15 @@ namespace Usecase
             {
                 cas.DrawCase(formGraphics);
             }
+            foreach (Lijn lijn in lijnen)
+            {
+                lijn.Drawline();
+            }
+            formGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         } //redraws everything in the picturebox
         private void CreateLine(MouseEventArgs muis)
         {
+
             if (line.beginpunt.X == 0 || line.eindpunt.X == 0)
             {
                 foreach (Actor actor in actoren)
@@ -139,20 +146,27 @@ namespace Usecase
 
                     if (actor.Clicked(muis))
                     {
-                        line.beginpunt = new Point(actor.armpunt.X, actor.armpunt.Y);
+                        //line.beginpunt = new Point(actor.armpunt.X, actor.armpunt.Y);
+                        line.actor = actor;
                     }
                 }
                 foreach (Usecase cas in usecases)
                 {
                     if (cas.Selected(muis))
                     {
-                        line.eindpunt = cas.punt;
+                        //line.eindpunt = cas.punt;
+                        //line.Eindp();
+                        line.usecase = cas;
+                        cas.Lijnen(line);
                     }
                 }
             }
-            if (line.beginpunt.X > 0 && line.eindpunt.X > 0)
+            if (line.actor != null && line.usecase != null)
             {
+                line.Eindp();
                 line.Drawline();
+                lijnen.Add(line);
+                
                 line = new Lijn(formGraphics);
             }
             else
@@ -163,10 +177,16 @@ namespace Usecase
 
                     if (actor.Clicked(muis))
                     {
-                        line.beginpunt = actor.armpunt;
+                        line.actor = actor;
                     }
                 }
             }
+            
         } //creates new lines 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReDraw();
+        }
     }
 }

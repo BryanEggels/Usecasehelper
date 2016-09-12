@@ -10,10 +10,9 @@ namespace Usecase
 {
     public class Usecase
     {
-        int id;
         string Naam;
         string Samenvatting;
-        string Actoren;
+        List<string> Actoren = new List<string>();
         string Aannamen;
         string Beschrijving;
         string Uitzonderingen;
@@ -22,7 +21,7 @@ namespace Usecase
         Pen pen = new Pen(Color.Black);
         Point Punt;
         Rectangle hitbox;
-
+        List<Lijn> lijnen;
         public string naam
         {
             get
@@ -49,11 +48,16 @@ namespace Usecase
         {
             get
             {
-                return Actoren;
+                StringBuilder sbuilder = new StringBuilder();
+                foreach (string actor in Actoren)
+                {
+                    sbuilder.Append(actor+" ");
+                }
+                return sbuilder.ToString();
             }
             set
             {
-                Actoren = value;
+                Actoren.Add(value);
             }
         }
         public string aannamen
@@ -110,11 +114,9 @@ namespace Usecase
         public Usecase(Point p1, Graphics g, string name)
         {
             this.Punt = p1;
-            
             Naam = name;
             DrawCase(g);
             DrawName(punt, g);
-            
         }
         public bool Selected(MouseEventArgs muis)
         {
@@ -145,5 +147,19 @@ namespace Usecase
             this.hitbox = rec;
             DrawName(punt, g);
         }  //draws the graphics
+        public void Lijnen(Lijn line)
+        { 
+            Actoren.Clear();
+            if (lijnen == null)
+            {
+                lijnen = new List<Lijn>();
+            }
+            lijnen.Add(line);
+            foreach (Lijn lijn in lijnen)
+            {
+                Actoren.Add(lijn.actor.naam);
+            }
+
+        }
     }
 }

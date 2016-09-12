@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Usecase
 {
-    class Actor
+    public class Actor
     {
         Point P1;
         string Naam;

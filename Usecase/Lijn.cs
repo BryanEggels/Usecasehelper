@@ -8,12 +8,14 @@ using System.Windows.Forms;
 
 namespace Usecase
 {
-    class Lijn
+    public class Lijn
     {
         Point Beginpunt;
         Point Eindpunt;
-        Graphics g;   
-
+        Graphics g;
+        Pen pen = new Pen(Color.Black);
+        Actor Actor;
+        Usecase Usecase;
         public Point beginpunt
         {
             get
@@ -36,25 +38,53 @@ namespace Usecase
                 Eindpunt = value;
             }
         }
+        public Actor actor
+        {
+            get
+            {
+                return Actor;
+            }
+            set
+            {
+                Actor = value;
+            }
+        }
+        public Usecase usecase
+        {
+            get
+            {
+                return Usecase;
+            }
+            set
+            {
+                Usecase = value;
+                Eindp();
+            }
+        }
+
         public Lijn(Graphics grap)
         {
             g = grap;
         }
         public void Drawline()
         {
-            Pen pen = new Pen(Color.Black);
-            Eindpunt.X = Eindpunt.X + 31;
-            g.DrawLine(pen, Beginpunt, Eindpunt);
+            g.DrawLine(pen, Actor.armpunt, Eindpunt);
         }
         public bool Selected(MouseEventArgs m)
         {
             Rectangle rec = new Rectangle(
-                Math.Min(Beginpunt.X, Eindpunt.X),
-                Math.Min(Beginpunt.Y, Eindpunt.Y),
-                Math.Max(Beginpunt.X, Eindpunt.X),
-                Math.Max(Beginpunt.Y, Eindpunt.Y));
+                Math.Min(Actor.armpunt.X, Usecase.punt.X),
+                Math.Min(Actor.armpunt.Y, Usecase.punt.Y),
+                Math.Max(Actor.armpunt.X, Usecase.punt.X),
+                Math.Max(Actor.armpunt.Y, Usecase.punt.Y));
+            
             return rec.Contains(m.Location);
                 
+        }
+        public void Eindp()
+        {
+            Eindpunt = Usecase.punt;
+            Eindpunt.X = Usecase.punt.X + 32;
         }
     }
 }

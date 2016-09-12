@@ -33,15 +33,15 @@
             this.rad_usecase = new System.Windows.Forms.RadioButton();
             this.rad_actor = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rad_delete = new System.Windows.Forms.RadioButton();
             this.rad_select = new System.Windows.Forms.RadioButton();
             this.rad_create = new System.Windows.Forms.RadioButton();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.btn_remove = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tb_name = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rad_delete = new System.Windows.Forms.RadioButton();
+            this.btn_redraw = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,7 +67,6 @@
             this.rad_line.Name = "rad_line";
             this.rad_line.Size = new System.Drawing.Size(45, 17);
             this.rad_line.TabIndex = 2;
-            this.rad_line.TabStop = true;
             this.rad_line.Text = "Line";
             this.rad_line.UseVisualStyleBackColor = true;
             // 
@@ -78,13 +77,13 @@
             this.rad_usecase.Name = "rad_usecase";
             this.rad_usecase.Size = new System.Drawing.Size(70, 17);
             this.rad_usecase.TabIndex = 1;
-            this.rad_usecase.TabStop = true;
             this.rad_usecase.Text = "Use case";
             this.rad_usecase.UseVisualStyleBackColor = true;
             // 
             // rad_actor
             // 
             this.rad_actor.AutoSize = true;
+            this.rad_actor.Checked = true;
             this.rad_actor.Location = new System.Drawing.Point(7, 20);
             this.rad_actor.Name = "rad_actor";
             this.rad_actor.Size = new System.Drawing.Size(50, 17);
@@ -104,6 +103,17 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modes";
+            // 
+            // rad_delete
+            // 
+            this.rad_delete.AutoSize = true;
+            this.rad_delete.Location = new System.Drawing.Point(22, 66);
+            this.rad_delete.Name = "rad_delete";
+            this.rad_delete.Size = new System.Drawing.Size(56, 17);
+            this.rad_delete.TabIndex = 2;
+            this.rad_delete.TabStop = true;
+            this.rad_delete.Text = "Delete";
+            this.rad_delete.UseVisualStyleBackColor = true;
             // 
             // rad_select
             // 
@@ -136,15 +146,6 @@
             this.btn_clear.Text = "Clear all";
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
-            // 
-            // btn_remove
-            // 
-            this.btn_remove.Location = new System.Drawing.Point(465, 43);
-            this.btn_remove.Name = "btn_remove";
-            this.btn_remove.Size = new System.Drawing.Size(75, 23);
-            this.btn_remove.TabIndex = 3;
-            this.btn_remove.Text = "Remove";
-            this.btn_remove.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -182,26 +183,25 @@
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // rad_delete
+            // btn_redraw
             // 
-            this.rad_delete.AutoSize = true;
-            this.rad_delete.Location = new System.Drawing.Point(22, 66);
-            this.rad_delete.Name = "rad_delete";
-            this.rad_delete.Size = new System.Drawing.Size(56, 17);
-            this.rad_delete.TabIndex = 2;
-            this.rad_delete.TabStop = true;
-            this.rad_delete.Text = "Delete";
-            this.rad_delete.UseVisualStyleBackColor = true;
+            this.btn_redraw.Location = new System.Drawing.Point(465, 42);
+            this.btn_redraw.Name = "btn_redraw";
+            this.btn_redraw.Size = new System.Drawing.Size(75, 23);
+            this.btn_redraw.TabIndex = 8;
+            this.btn_redraw.Text = "Redraw";
+            this.btn_redraw.UseVisualStyleBackColor = true;
+            this.btn_redraw.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 472);
+            this.Controls.Add(this.btn_redraw);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.btn_remove);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -226,7 +226,6 @@
         private System.Windows.Forms.RadioButton rad_select;
         private System.Windows.Forms.RadioButton rad_create;
         private System.Windows.Forms.Button btn_clear;
-        private System.Windows.Forms.Button btn_remove;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -234,6 +233,7 @@
         private System.Windows.Forms.RichTextBox tb_name;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton rad_delete;
+        private System.Windows.Forms.Button btn_redraw;
     }
 }
 
